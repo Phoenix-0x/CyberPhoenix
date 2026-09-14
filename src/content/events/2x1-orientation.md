@@ -2,7 +2,7 @@
 id: "2x1"
 title: "CyberVerse & Hacker's NET"
 tagline: "Embark on Your Cybersecurity Journey. Networking concepts with practical studies"
-date: "2026-09-08"
+date: "2026-09-12"
 keywords:
   [
     "Career Exploration",
