@@ -1,7 +1,5 @@
 import { getBlogBySlug, getSortedBlogs } from '@/lib/data/blogs';
-import ReactMarkdown from 'react-markdown';
-import remarkGfm from 'remark-gfm';
-import rehypeHighlight from 'rehype-highlight';
+import MarkdownRenderer from '@/components/ui/MarkdownRenderer';
 import { Clock, Calendar, User, ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
 import styles from './blog.module.css';
@@ -56,9 +54,7 @@ export default async function BlogPost({ params }: { params: { slug: string } })
         </header>
 
         <div className={styles.content}>
-          <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeHighlight]}>
-            {blog.content}
-          </ReactMarkdown>
+          <MarkdownRenderer content={blog.content} />
         </div>
       </article>
     </main>

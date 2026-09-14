@@ -1,15 +1,11 @@
 "use client";
 
 import { useState, useRef } from "react";
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
-import rehypeHighlight from "rehype-highlight";
-import "highlight.js/styles/atom-one-dark.css";
+import MarkdownRenderer from "@/components/ui/MarkdownRenderer";
 import styles from "./writer.module.css";
-import blogStyles from "../[slug]/blog.module.css";
 import { 
   Bold, Italic, List, ListOrdered, Quote, Code, 
-  Link as LinkIcon, Heading1, Heading2, SquareTerminal, X, Download
+  Link as LinkIcon, Heading1, Heading2, SquareTerminal, X, Download, AlertCircle, Info, ShieldAlert, AlertTriangle, Lightbulb
 } from "lucide-react";
 
 export default function BlogWriter() {
@@ -27,9 +23,10 @@ export default function BlogWriter() {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   const handleTagKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter' || e.key === ',') {
+    // Add tag on Enter, Comma, or Space
+    if (e.key === 'Enter' || e.key === ',' || e.key === ' ') {
       e.preventDefault();
-      const newTag = tagInput.trim().replace(/^#/, '');
+      const newTag = tagInput.trim().replace(/^#/, '').toLowerCase();
       if (newTag && !tags.includes(newTag)) {
         setTags([...tags, newTag]);
       }
@@ -70,16 +67,12 @@ export default function BlogWriter() {
       const author = formData.get('author') as string;
       const summary = formData.get('summary') as string;
 
-      // Format date as YYYY-MM-DD
       const date = new Date().toISOString().split('T')[0];
-      
-      // Create slug from title
       const slug = title
         .toLowerCase()
         .replace(/[^a-z0-9]+/g, '-')
         .replace(/(^-|-$)+/g, '');
 
-      // Build YAML frontmatter
       const yamlTags = tags.length > 0 
         ? `\ntags:\n${tags.map(t => `  - ${t}`).join('\n')}`
         : '\ntags: []';
@@ -94,7 +87,6 @@ summary: "${summary.replace(/"/g, '\\"')}"${yamlTags}
 ${content}
 `;
 
-      // Trigger client-side download
       const blob = new Blob([fileContent], { type: "text/markdown" });
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
@@ -107,7 +99,6 @@ ${content}
 
       setStatus({ success: true, message: `Successfully generated ${slug}.md! Place it in src/content/blogs to publish.` });
       
-      // Reset form
       (e.target as HTMLFormElement).reset();
       setContent('');
       setTags([]);
@@ -156,7 +147,7 @@ ${content}
                 <input 
                   type="text" 
                   className={styles.tagInputField}
-                  placeholder={tags.length === 0 ? "Type a tag and hit Enter..." : "Add another tag..."}
+                  placeholder={tags.length === 0 ? "Type tag & hit Space..." : "Add tag..."}
                   value={tagInput}
                   onChange={(e) => setTagInput(e.target.value)}
                   onKeyDown={handleTagKeyDown}
@@ -180,11 +171,19 @@ ${content}
               <button type="button" className={styles.toolbarBtn} onClick={() => insertText('**', '**')} title="Bold"><Bold size={18} /></button>
               <button type="button" className={styles.toolbarBtn} onClick={() => insertText('*', '*')} title="Italic"><Italic size={18} /></button>
               <button type="button" className={styles.toolbarBtn} onClick={() => insertText('- ', '')} title="Bullet List"><List size={18} /></button>
+              <button type="button" className={styles.toolbarBtn} onClick={() => insertText('- [ ] ', '')} title="Task List"><SquareTerminal size={18} /></button>
               <button type="button" className={styles.toolbarBtn} onClick={() => insertText('1. ', '')} title="Numbered List"><ListOrdered size={18} /></button>
               <button type="button" className={styles.toolbarBtn} onClick={() => insertText('> ', '')} title="Quote"><Quote size={18} /></button>
               <button type="button" className={styles.toolbarBtn} onClick={() => insertText('`', '`')} title="Inline Code"><Code size={18} /></button>
               <button type="button" className={styles.toolbarBtn} onClick={() => insertText('```\n', '\n```')} title="Code Block"><SquareTerminal size={18} style={{ color: 'var(--color-1)' }} /></button>
               <button type="button" className={styles.toolbarBtn} onClick={() => insertText('[', '](https://)')} title="Link"><LinkIcon size={18} /></button>
+              <div style={{ width: '1px', height: '20px', background: 'rgba(255,255,255,0.1)', margin: '0 5px' }} />
+              <button type="button" className={styles.toolbarBtn} onClick={() => insertText('> [!NOTE]\n> ', '')} title="Note Alert"><Info size={18} color="#38bdf8" /></button>
+              <button type="button" className={styles.toolbarBtn} onClick={() => insertText('> [!TIP]\n> ', '')} title="Tip Alert"><Lightbulb size={18} color="#4ade80" /></button>
+              <button type="button" className={styles.toolbarBtn} onClick={() => insertText('> [!IMPORTANT]\n> ', '')} title="Important Alert"><AlertCircle size={18} color="#a78bfa" /></button>
+              <button type="button" className={styles.toolbarBtn} onClick={() => insertText('> [!WARNING]\n> ', '')} title="Warning Alert"><AlertTriangle size={18} color="#facc15" /></button>
+              <button type="button" className={styles.toolbarBtn} onClick={() => insertText('> [!CAUTION]\n> ', '')} title="Caution Alert"><ShieldAlert size={18} color="#f87171" /></button>
+              <button type="button" className={styles.toolbarBtn} onClick={() => insertText('<details>\n<summary>Click to expand</summary>\n\n', '\n\n</details>')} title="Collapsible">▼</button>
             </div>
             
             <div className={styles.tabs}>
@@ -205,11 +204,9 @@ ${content}
                 />
               </div>
               <div className={`${styles.pane} ${activeTab === 'preview' ? styles.active : ''}`}>
-                <div className={`${styles.preview} ${blogStyles.content}`}>
+                <div className={styles.preview}>
                   {content ? (
-                    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeHighlight]}>
-                      {content}
-                    </ReactMarkdown>
+                    <MarkdownRenderer content={content} />
                   ) : (
                     <div style={{ opacity: 0.5, fontStyle: 'italic', textAlign: 'center', marginTop: '2rem' }}>
                       Live preview will appear here...

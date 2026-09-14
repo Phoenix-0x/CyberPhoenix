@@ -229,6 +229,7 @@
   padding: 1.5rem;
   overflow-y: auto;
   background: rgba(0, 0, 0, 0.2);
+  height: 100%;
 }
 
 .submitBtn {
