@@ -12,6 +12,31 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(224, 238, 238, 0.2) transparent;
+}
+
+/* Premium Minimal Webkit Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(224, 238, 238, 0.2);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(224, 238, 238, 0.4);
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
 }
 
 html,
