@@ -11,7 +11,10 @@ keywords:
     "Case Studies",
   ]
 resources:
-  - title: "Live Presentation"
+  - title: "Networking Basics"
+    url: "https://cyber-saniya.github.io/networking"
+    icon: "slides"
+  - title: "UnderTheHood"
     url: "https://phoenix-0x.github.io/networking"
     icon: "slides"
 ---
