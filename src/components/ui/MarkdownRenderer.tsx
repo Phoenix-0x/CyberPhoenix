@@ -26,10 +26,10 @@ function stripAlertTag(children: any, tag: string): any {
     return children.map(child => stripAlertTag(child, tag));
   }
   if (React.isValidElement(children) && children.props) {
-    return React.cloneElement(children, {
-      ...children.props,
+    return React.cloneElement(children as React.ReactElement, {
+      ...(children.props as object),
       children: stripAlertTag((children.props as any).children, tag)
-    });
+    } as any);
   }
   return children;
 }
