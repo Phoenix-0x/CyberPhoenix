@@ -253,7 +253,7 @@
   color: #f87171;
 }
 
-hr {
+.markdownContent hr {
   border: 0;
   border-top: 1px solid rgba(224, 238, 238, 0.1);
   margin: 3rem 0;
