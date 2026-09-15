@@ -5,7 +5,7 @@ import MarkdownRenderer from "@/components/ui/MarkdownRenderer";
 import styles from "./writer.module.css";
 import { 
   Bold, Italic, List, ListOrdered, Quote, Code, 
-  Link as LinkIcon, Heading1, Heading2, SquareTerminal, X, Download, AlertCircle, Info, ShieldAlert, AlertTriangle, Lightbulb
+  Link as LinkIcon, Heading1, Heading2, SquareTerminal, X, Download, AlertCircle, Info, ShieldAlert, AlertTriangle, Lightbulb, Video
 } from "lucide-react";
 
 export default function BlogWriter() {
@@ -183,6 +183,7 @@ ${content}
               <button type="button" className={styles.toolbarBtn} onClick={() => insertText('> [!IMPORTANT]\n> ', '')} title="Important Alert"><AlertCircle size={18} color="#a78bfa" /></button>
               <button type="button" className={styles.toolbarBtn} onClick={() => insertText('> [!WARNING]\n> ', '')} title="Warning Alert"><AlertTriangle size={18} color="#facc15" /></button>
               <button type="button" className={styles.toolbarBtn} onClick={() => insertText('> [!CAUTION]\n> ', '')} title="Caution Alert"><ShieldAlert size={18} color="#f87171" /></button>
+              <button type="button" className={styles.toolbarBtn} onClick={() => insertText('![youtube](https://www.youtube.com/watch?v=)', '')} title="YouTube Video"><Video size={18} color="#ff0000" /></button>
               <button type="button" className={styles.toolbarBtn} onClick={() => insertText('<details>\n<summary>Click to expand</summary>\n\n', '\n\n</details>')} title="Collapsible">▼</button>
             </div>
             

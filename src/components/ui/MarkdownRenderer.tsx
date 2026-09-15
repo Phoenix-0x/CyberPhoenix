@@ -1,9 +1,13 @@
+"use client";
 import React from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import remarkUnwrapImages from "remark-unwrap-images";
 import rehypeHighlight from "rehype-highlight";
 import rehypeRaw from "rehype-raw";
 import "highlight.js/styles/atom-one-dark.css";
+import LiteYouTubeEmbed from 'react-lite-youtube-embed';
+import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css';
 import { AlertCircle, Lightbulb, Info, AlertTriangle, ShieldAlert } from "lucide-react";
 import styles from "./MarkdownRenderer.module.css";
 
@@ -38,7 +42,7 @@ export default function MarkdownRenderer({ content }: Props) {
   return (
     <div className={styles.markdownContent}>
       <ReactMarkdown 
-        remarkPlugins={[remarkGfm]} 
+        remarkPlugins={[remarkGfm, remarkUnwrapImages]} 
         rehypePlugins={[rehypeRaw, rehypeHighlight]}
         components={{
           blockquote({ node, children, ...props }) {
@@ -97,6 +101,34 @@ export default function MarkdownRenderer({ content }: Props) {
               return <input {...props} className={styles.taskCheckbox} />;
             }
             return <input {...props} />;
+          },
+          p({ node, children, ...props }) {
+            // Check if the paragraph contains a youtube image in its AST
+            const hasYoutube = node?.children?.some(
+              (child: any) => child.type === 'element' && child.tagName === 'img' && child.properties?.alt === 'youtube'
+            );
+            
+            if (hasYoutube) {
+              return <div className={styles.youtubeParagraph} {...props}>{children}</div>;
+            }
+            return <p {...props}>{children}</p>;
+          },
+          img({ node, src, alt, ...props }) {
+            if (alt === 'youtube' && typeof src === 'string') {
+              const match = src.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})/);
+              if (match && match[1]) {
+                return (
+                  <div className={styles.youtubeWrapper}>
+                    <LiteYouTubeEmbed 
+                      id={match[1]} 
+                      title="YouTube Video" 
+                      poster="maxresdefault"
+                    />
+                  </div>
+                );
+              }
+            }
+            return <img src={src} alt={alt} {...props} />;
           }
         }}
       >

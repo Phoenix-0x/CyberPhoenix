@@ -258,3 +258,28 @@
   border-top: 1px solid rgba(224, 238, 238, 0.1);
   margin: 3rem 0;
 }
+
+/* YouTube Premium Minimal Embed */
+.youtubeWrapper {
+  margin: 2rem 0;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  border: 1px solid rgba(224, 238, 238, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.markdownContent :global(.yt-lite) {
+  background-color: #000;
+  position: relative;
+  display: block;
+  contain: content;
+  background-position: center center;
+  background-size: cover;
+  cursor: pointer;
+}
+
+
+
+.youtubeParagraph {
+  margin-bottom: 1.5rem;
+}
