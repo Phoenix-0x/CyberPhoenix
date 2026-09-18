@@ -18,6 +18,7 @@ export interface EventMeta {
   date: string;
   keywords: string[];
   status: 'concluded' | 'upcoming';
+  tentative?: boolean;
   resources?: EventResource[];
 }
 
@@ -47,6 +48,7 @@ export function getSortedEvents(): EventMeta[] {
         date: data.date,
         keywords: data.keywords || [],
         status,
+        tentative: data.tentative === true,
         resources: data.resources || []
       };
     });

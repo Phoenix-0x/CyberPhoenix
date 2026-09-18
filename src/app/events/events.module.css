@@ -175,6 +175,13 @@
   line-height: 1.2;
 }
 
+.badgesWrapper {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
 .statusBadge {
   flex-shrink: 0;
   display: inline-flex;
@@ -209,6 +216,18 @@
   background: rgba(56, 189, 248, 0.15);
   border-color: rgba(56, 189, 248, 0.5);
   box-shadow: 0 0 15px rgba(56, 189, 248, 0.2);
+}
+
+.statusTentative {
+  background: rgba(250, 204, 21, 0.1);
+  color: #facc15;
+  border: 1px solid rgba(250, 204, 21, 0.3);
+}
+
+.timelineRow:hover .statusTentative {
+  background: rgba(250, 204, 21, 0.15);
+  border-color: rgba(250, 204, 21, 0.5);
+  box-shadow: 0 0 15px rgba(250, 204, 21, 0.2);
 }
 
 .keywords {

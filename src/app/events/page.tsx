@@ -3,6 +3,7 @@ import styles from './events.module.css';
 import { CircleCheckBig, CalendarClock, Presentation, FileText, TerminalSquare, Code2, ExternalLink, Layers } from 'lucide-react';
 import { Metadata } from 'next';
 import Link from 'next/link';
+import ShinyText from '@/components/ui/ShinyText';
 
 export const metadata: Metadata = {
   title: 'Events | CyberPhoenix',
@@ -27,7 +28,7 @@ export default function EventsPage() {
       <header className={styles.header}>
         <h1 className={styles.title}>
           <span>CYBERPHOENIX</span>
-          <span className={styles.highlightText}>TIMELINE</span>
+          <ShinyText text="TIMELINE" speed={3} className={styles.highlightText} color="var(--color-1)" shineColor="#ffffff" yoyo={true} />
         </h1>
         <div className={styles.subtitle}>
           <span>Explore our journey through past workshops,</span>
@@ -61,13 +62,20 @@ export default function EventsPage() {
               {/* Right Column: Card Content */}
               <div className={styles.cardCol}>
                 <div className={styles.cardContent}>
-                  <div className={styles.cardHeader}>
+                    <div className={styles.cardHeader}>
                     <h2 className={styles.eventTitle}>
                       {event.id && <span className={styles.eventId}>{event.id} <span style={{opacity: 0.5}}>-</span> </span>}
                       {event.title}
                     </h2>
-                    <div className={`${styles.statusBadge} ${isConcluded ? styles.statusConcluded : styles.statusUpcoming}`}>
-                      {isConcluded ? 'CONCLUDED' : 'UPCOMING'}
+                    <div className={styles.badgesWrapper}>
+                      <div className={`${styles.statusBadge} ${isConcluded ? styles.statusConcluded : styles.statusUpcoming}`}>
+                        {isConcluded ? 'CONCLUDED' : 'UPCOMING'}
+                      </div>
+                      {event.tentative && !isConcluded && (
+                        <div className={`${styles.statusBadge} ${styles.statusTentative}`}>
+                          TENTATIVE
+                        </div>
+                      )}
                     </div>
                   </div>
                   
