@@ -23,11 +23,13 @@ export default async function About() {
   
   const techTeam = members.filter(m => m.teams.includes(Team.TECH) && !m.teams.includes(Team.CORE) && !m.roles.includes(Role.MENTOR) && !m.roles.includes(Role.FOUNDER) && m.status === Status.ACTIVE);
   const mediaTeam = members.filter(m => m.teams.includes(Team.MEDIA) && !m.teams.includes(Team.CORE) && !m.roles.includes(Role.MENTOR) && !m.roles.includes(Role.FOUNDER) && m.status === Status.ACTIVE);
+  const cyberteam=members.filter((m)=>{return m.teams.includes(Team.CYBER) && !m.teams.includes(Team.CORE) && !m.roles.includes(Role.MENTOR) && !m.roles.includes(Role.FOUNDER) && m.status=== Status.ACTIVE})
   
   const specialMentions = members.filter(m => 
     m.status === Status.RESIGNED || 
     m.status === Status.REMOVED
   );
+
 
   return (
     <main className={styles.container}>
@@ -132,6 +134,16 @@ export default async function About() {
         </h2>
         <div className={styles.teamGrid}>
           {mediaTeam.map((member) => <MemberCard key={member.id} member={member} />)}
+        </div>
+      </section>
+      
+      <section className={styles.section2}>
+        <h2 className={styles.sectionTitle}>
+          <span className={styles.highlightText}>CYBER </span>
+          <span>TEAM</span>
+        </h2>
+        <div className={styles.teamGrid}>
+          {cyberteam.map((member) => <MemberCard key={member.id} member={member} />)}
         </div>
       </section>
 
