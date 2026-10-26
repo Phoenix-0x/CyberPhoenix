@@ -2,7 +2,7 @@ export enum Team {
   CORE = "Core Team",
   MEDIA = "Media Team",
   TECH = "Tech Team",
-  CYBER = "Cyber Team"
+  CYBER = "Cyber Team",
 }
 
 export enum Role {
@@ -49,59 +49,44 @@ export const members: Member[] = [
     teams: [],
     roles: [Role.FACULTY],
     status: Status.ACTIVE,
-    reason: "Faculty in-charge of CyberPhoenix Club",
+    reason:
+      "Former Faculty in-charge of Supporter since creation of CyberPhoenix.",
   },
 
   {
-    id: "Sunil",
-    name: "Dr. Sunil",
+    id: "sunil-verma",
+    name: "Dr. Sunil Verma",
     teams: [],
     roles: [Role.FACULTY],
     status: Status.ACTIVE,
-    reason: "",
-
+    reason: "Faculty in-charge of CyberPhoenix Club",
   },
 
-  // ACTIVE MEMBERS
-  //CORE TEAM
+  // CORE TEAM
+  {
+    id: "uday",
+    name: "Uday",
+    teams: [Team.CORE, Team.TECH],
+    roles: [Role.FOUNDER, Role.COORDINATOR],
+    status: Status.ACTIVE,
+    linkedin: "https://www.linkedin.com/in/linkin-uday",
+    reason:
+      "Pioneering the club's technical direction and overseeing core infrastructure.",
+  },
   {
     id: "harsh-sharma",
     name: "Harsh Sharma",
-    teams: [Team.CORE],
-    roles: [Role.COORDINATOR, Role.TEAM_LEAD],
+    teams: [Team.CORE, Team.CYBER],
+    roles: [Role.COORDINATOR],
     status: Status.ACTIVE,
     linkedin: "https://www.linkedin.com/in/harsh-sharma80",
     reason:
       "Driving organizational strategy and ensuring seamless collaboration across all divisions.",
   },
   {
-    id: "harsh-raj-ranjan",
-    name: "Harsh Raj Ranjan",
-    teams: [Team.CORE],
-    roles: [Role.CO_COORDINATOR],
-    status: Status.ACTIVE,
-    linkedin: "https://www.linkedin.com/in/harshrajranjan01",
-    reason:
-      "Strengthening the core framework and streamlining event management processes.",
-  },
-  {
-    id: "ashish",
-    name: "Ashish",
-    teams: [Team.CORE],
-    roles: [Role.MEMBER],
-    status: Status.ACTIVE,
-    linkedin: "https://linkedin.com/in/ashish-nagar-6a9a1a349",
-    reason:
-      "Managing foundational operations and facilitating club-wide initiatives.",
-  },
-
-
-  //Media Team
-
-  {
     id: "yash-raj",
     name: "Yash Raj",
-    teams: [Team.MEDIA],
+    teams: [Team.CORE, Team.MEDIA],
     roles: [Role.CO_COORDINATOR],
     status: Status.ACTIVE,
     linkedin: "https://www.linkedin.com/in/yash-raj-0105a5330",
@@ -109,14 +94,37 @@ export const members: Member[] = [
       "Bridging the gap between technical execution and visual communication.",
   },
   {
-    id: "prajwal-yadav",
-    name: "Prajwal Yadav",
-    teams: [Team.MEDIA],
-    roles: [Role.MEMBER],
+    id: "ashish",
+    name: "Ashish",
+    teams: [Team.CORE, Team.MEDIA],
+    roles: [Role.CO_COORDINATOR, Role.TEAM_LEAD],
     status: Status.ACTIVE,
+    linkedin: "https://linkedin.com/in/ashish-nagar-6a9a1a349",
     reason:
-      "Crafting engaging digital content and elevating the club's visual presence.",
+      "Managing foundational operations and facilitating club-wide initiatives.",
   },
+  {
+    id: "saniya-yadav",
+    name: "Saniya Yadav",
+    teams: [Team.CORE, Team.TECH],
+    roles: [Role.TEAM_LEAD],
+    status: Status.ACTIVE,
+    linkedin: "https://www.linkedin.com/in/saniya-yadav-5471b3323",
+    reason:
+      "Analyzing vulnerabilities and contributing to hands-on security workshops.",
+  },
+  {
+    id: "harsh-raj-ranjan",
+    name: "Harsh Raj Ranjan",
+    teams: [Team.CORE, Team.CYBER],
+    roles: [Role.TEAM_LEAD],
+    status: Status.ACTIVE,
+    linkedin: "https://www.linkedin.com/in/harshrajranjan01",
+    reason:
+      "Strengthening the core framework and streamlining event management processes.",
+  },
+
+  // Media Team
   {
     id: "priyanshi-singh",
     name: "Priyanshi Singh",
@@ -124,7 +132,7 @@ export const members: Member[] = [
     roles: [Role.MEMBER],
     status: Status.ACTIVE,
     reason:
-      "Crafting engaging digital content and elevating the club's visual presence."
+      "Crafting engaging digital content and elevating the club's visual presence.",
   },
   {
     id: "Rahul Pandit",
@@ -154,44 +162,11 @@ export const members: Member[] = [
     roles: [Role.MEMBER],
     status: Status.ACTIVE,
     linkedin: "https://www.linkedin.com/in/mohini-sharma-36687a3a3",
-
     reason:
       "Crafting engaging digital content and elevating the club's visual presence.",
   },
-  {
-    id: "dushyant-yadav",
-    name: "Dushyant Yadav",
-    teams: [Team.MEDIA],
-    roles: [Role.MEMBER],
-    status: Status.ACTIVE,
-    linkedin: "https://www.linkedin.com/in/dushyant-yadav-305b69211",
-    reason:
-      "Documenting club milestones and amplifying our reach across social platforms.",
-  },
 
-  //Tech Team
-
-  {
-    id: "uday",
-    name: "Uday",
-    teams: [Team.CORE, Team.TECH],
-    roles: [Role.FOUNDER, Role.COORDINATOR, Role.TEAM_LEAD],
-    status: Status.ACTIVE,
-    linkedin: "https://www.linkedin.com/in/linkin-uday",
-    reason:
-      "Pioneering the club's technical direction and overseeing core infrastructure.",
-  },
-
-  {
-    id: "saniya-yadav",
-    name: "Saniya Yadav",
-    teams: [Team.TECH],
-    roles: [Role.MEMBER],
-    status: Status.ACTIVE,
-    linkedin: "https://www.linkedin.com/in/saniya-yadav-5471b3323",
-    reason:
-      "Analyzing vulnerabilities and contributing to hands-on security workshops.",
-  },
+  // Tech Team
   {
     id: "Himanshi",
     name: "Himanshi",
@@ -200,7 +175,7 @@ export const members: Member[] = [
     status: Status.ACTIVE,
     linkedin: "https://www.linkedin.com/in/himanshi-shekhawat-aa57323a2",
     reason:
-      "Building secure architectures and guiding junior members in technical labs.",
+      "A Python programmer and good at handling media tasks as well, aims to improve overall tech skills and team work.",
   },
   {
     id: "Nikunj",
@@ -210,11 +185,10 @@ export const members: Member[] = [
     status: Status.ACTIVE,
     linkedin: "https://www.linkedin.com/in/nikunj-kumar-ray-532583382",
     reason:
-      "Optimizing web performance and implementing secure coding practices.",
+      "An emerging frontend developer, skilled in JS frontends, bringing web-dev improvements to club.",
   },
 
-  //CYBER TEAM
-
+  // CYBER TEAM
   {
     id: "Tejasvi",
     name: "Tejasvi",
@@ -222,8 +196,7 @@ export const members: Member[] = [
     roles: [Role.MEMBER],
     status: Status.ACTIVE,
     linkedin: "https://www.linkedin.com/in/tejasvi-dolia-aiml",
-    reason:
-      "",
+    reason: "",
   },
   {
     id: "Mannat",
@@ -232,8 +205,7 @@ export const members: Member[] = [
     roles: [Role.MEMBER],
     status: Status.ACTIVE,
     linkedin: "https://www.linkedin.com/in/mannat-sharma-843b4342b",
-    reason:
-      "",
+    reason: "",
   },
   {
     id: "Muskan",
@@ -242,8 +214,7 @@ export const members: Member[] = [
     roles: [Role.MEMBER],
     status: Status.ACTIVE,
     linkedin: "https://www.linkedin.com/in/muskan-sharma-256759422",
-    reason:
-      "",
+    reason: "",
   },
 
   {
@@ -254,8 +225,7 @@ export const members: Member[] = [
     status: Status.ACTIVE,
     linkedin: "https://www.linkedin.com/in/charu-jangra-829115314",
 
-    reason:
-      "",
+    reason: "",
   },
   {
     id: "Amandeep",
@@ -264,8 +234,7 @@ export const members: Member[] = [
     roles: [Role.MEMBER],
     status: Status.ACTIVE,
     linkedin: "https://www.linkedin.com/in/aman-saharawat-048b57384",
-    reason:
-      "",
+    reason: "",
   },
   {
     id: "Chandan",
@@ -274,18 +243,17 @@ export const members: Member[] = [
     roles: [Role.MEMBER],
     status: Status.ACTIVE,
     linkedin: "https://www.linkedin.com/in/chandan-verma-0a523b445",
-    reason:
-      "",
+    reason: "",
   },
-  // FOUNDERS
 
+  // FOUNDERS
   {
     id: "lakshika",
     name: "Lakshika",
     teams: [Team.MEDIA],
     roles: [Role.FOUNDER, Role.MENTOR],
     status: Status.ALUMNI,
-    linkedin: "https://www.linkedin.com/in/lakshika-soni-9a2bba291", // Treated as Mentor in UI due to Role.MENTOR
+    linkedin: "https://www.linkedin.com/in/lakshika-soni-9a2bba291",
     reason:
       "Actively guiding the current cohort and shaping the club's long-term vision.",
   },
@@ -450,21 +418,27 @@ export const members: Member[] = [
     roles: [Role.MEMBER],
     status: Status.RESIGNED,
     linkedin: "https://www.linkedin.com/in/yachika-2b940238a",
-    reason:
-      "Developing robust technical solutions and participating in competitive cybersecurity challenges.",
+    reason: "",
   },
-   {
+  {
+    id: "dushyant-yadav",
+    name: "Dushyant Yadav",
+    teams: [Team.MEDIA],
+    roles: [Role.MEMBER],
+    status: Status.RESIGNED,
+    linkedin: "https://www.linkedin.com/in/dushyant-yadav-305b69211",
+    reason: "",
+  },
+  {
     id: "vikas",
     name: "Vikas",
     teams: [Team.TECH],
     roles: [Role.MEMBER],
     status: Status.RESIGNED,
     linkedin: "https://www.linkedin.com/in/vikasdhiiman",
-    reason:
-      "Building secure architectures and guiding junior members in technical labs.",
+    reason: "",
   },
-
-    {
+  {
     id: "kunal",
     name: "Kunal",
     teams: [Team.TECH],
@@ -474,8 +448,15 @@ export const members: Member[] = [
     reason:
       "Optimizing web performance and implementing secure coding practices.",
   },
-
-
+  {
+    id: "prajwal-yadav",
+    name: "Prajwal Yadav",
+    teams: [Team.MEDIA],
+    roles: [Role.MEMBER],
+    status: Status.RESIGNED,
+    reason:
+      "Crafting engaging digital content and elevating the club's visual presence.",
+  },
 ];
 
 export async function getMembers(): Promise<Member[]> {
