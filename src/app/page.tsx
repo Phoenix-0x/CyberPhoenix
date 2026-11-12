@@ -110,7 +110,7 @@ export default function Home() {
             fear. Meet these guardians below.
           </p>
           <div style={{ marginTop: "1rem" }}>
-            <Button href="/about">About Us</Button>
+            <Button href="/about" className="btn-glow">About Us</Button>
           </div>
         </div>
       </section>
@@ -122,9 +122,9 @@ export default function Home() {
           <span className={styles.highlightText}>OFFER</span>
         </h2>
 
-        <div className={styles.offerGrid}>
+        <div className={styles.offerGrid } >
           {offers.map((offer, idx) => (
-            <div key={idx} className={styles.offerCard}>
+            <div key={idx} className={`${styles.offerCard} event-card`}>
               <div className={styles.offerIcon}>{offer.icon}</div>
               <h3 className={styles.offerTitle}>{offer.title}</h3>
               <p className={styles.offerText}>{offer.description}</p>

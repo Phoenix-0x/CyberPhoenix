@@ -11,14 +11,14 @@ export default function Navbar() {
   return (
     <nav className={styles.nav}>
       <Link href="/" className={styles.logo}>
-        <h1>CyberPhoenix</h1>
+        <h1 className="brand-text">CyberPhoenix</h1>
       </Link>
       
       <div className={`${styles.navElement} ${isOpen ? styles.navElementOpen : ""}`}>
-        <Link className={styles.navLink} href="/" onClick={() => setIsOpen(false)}>Home</Link>
-        <Link className={styles.navLink} href="/events" onClick={() => setIsOpen(false)}>Our Events</Link>
-        <Link className={styles.navLink} href="/blogs" onClick={() => setIsOpen(false)}>Hacklogs</Link>
-        <Link className={styles.navLink} href="/about" onClick={() => setIsOpen(false)}>About Us</Link>
+        <button className="btn-glow"><Link className={styles.navLink} href="/" onClick={() => setIsOpen(false)}>Home</Link></button>
+        <button className="btn-glow"><Link className={styles.navLink} href="/events" onClick={() => setIsOpen(false)}>Our Events</Link></button>
+        <button className="btn-glow"><Link className={styles.navLink} href="/blogs" onClick={() => setIsOpen(false)}>Hacklogs</Link></button>
+        <button className="btn-glow"><Link className={styles.navLink} href="/about" onClick={() => setIsOpen(false)}>About Us</Link></button>
       </div>
 
       <div className={styles.hamburger} onClick={() => setIsOpen(!isOpen)}>
