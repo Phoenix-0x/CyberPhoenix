@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import LetterGlitchBackground from "@/components/LetterGlitchBackground";
 import "./globals.css";
-import LetterGlitch from "@/components/LetterGlitch";
 
 export const metadata: Metadata = {
   title: "CyberPhoenix",
@@ -20,9 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <div className="site-letter-glitch">
-          <LetterGlitch  />
-        </div>
+        <LetterGlitchBackground />
         <Navbar />
         <div className="layout-content">{children}</div>
         <Footer />

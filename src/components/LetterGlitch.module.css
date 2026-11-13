@@ -1,11 +1,11 @@
-.letter-glitch {
+.letterGlitch {
   position: relative;
   width: 100%;
   height: 100%;
   overflow: hidden;
 }
 
-.letter-glitch-canvas {
+.letterGlitchCanvas {
   position: absolute;
   inset: 0;
   display: block;

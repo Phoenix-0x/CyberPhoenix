@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, type CSSProperties, type HTMLAttributes } from 'react';
-import './LetterGlitch.css';
+import styles from './LetterGlitch.module.css';
 
 export type ClickEffect = 'tear' | 'burst' | 'none';
 
@@ -990,8 +990,13 @@ const LetterGlitch = ({
   });
 
   return (
-    <div ref={containerRef} className={`letter-glitch${className ? ` ${className}` : ''}`} style={style} {...rest}>
-      <canvas ref={canvasRef} className="letter-glitch-canvas" aria-hidden="true" />
+    <div
+      ref={containerRef}
+      className={`${styles.letterGlitch}${className ? ` ${className}` : ''}`}
+      style={style}
+      {...rest}
+    >
+      <canvas ref={canvasRef} className={styles.letterGlitchCanvas} aria-hidden="true" />
     </div>
   );
 };
