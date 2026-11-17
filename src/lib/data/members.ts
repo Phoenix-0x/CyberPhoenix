@@ -209,7 +209,7 @@ export const members: Member[] = [
   },
   {
     id: "Muskan",
-    name: "Muskant",
+    name: "Muskan",
     teams: [Team.CYBER],
     roles: [Role.MEMBER],
     status: Status.ACTIVE,
